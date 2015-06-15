@@ -1,0 +1,113 @@
+#red {
+	color: white;
+	border: 1px solid black;
+	background-color: red;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	float: left;
+	display: inline-block;
+	margin-top: 20px;
+}
+
+#red img {
+	position: relative;
+	bottom: 70px;
+	left: 27px;
+}
+
+#orange {
+	color: white;
+	border: 1px solid black;
+	background-color: orange;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	margin-left: 50px;
+	margin-top: 20px;
+	display: inline-block;
+}
+
+#orange img {
+	position: relative;
+	bottom: 100px;
+	left: 27px;
+}
+
+
+#yellow {
+	color: white;
+	border: 1px solid black;
+	background-color: yellow;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	margin-left: 40px;
+	display: inline-block;
+}
+
+#yellow img {
+	position: relative;
+	bottom: 100px;
+	left: 27px;
+}
+
+
+#green {
+	color: white;
+	border: 1px solid black;
+	background-color: green;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	margin-top: -30px;
+}
+
+#green img {
+	position: relative;
+	bottom: 100px;
+	left: 27px;
+}
+
+
+#blue {
+	color: white;
+	border: 1px solid black;
+	background-color: blue;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	margin-left: 100px;
+	margin-top: -50px;
+}
+
+#blue img {
+	position: relative;
+	bottom: 100px;
+	left: 27px;
+}
+
+
+#purple {
+	color: white;
+	border: 1px solid black;
+	background-color: purple;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	left: 195px;
+	top: -50px;
+}
+
+#purple img {
+	position: relative;
+	bottom: 100px;
+	left: 27px;
+}
+
+#ribbon {
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+

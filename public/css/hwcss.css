@@ -1,0 +1,53 @@
+h1 {
+	color: rebeccapurple;
+	text-decoration: underline;
+	background-color: rgba(255, 255, 255, .9);
+}
+
+h2 {
+	color: red;
+	text-decoration: underline;
+}
+
+body {
+	background-color: rgb(255, 255, 200);
+	background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqqj01LNVuk33XvFyogPMvvf578BiIdMPGLjSug1_gTH3Y4QzQ5g);
+	font-family: "Comic Sans MS";
+}
+
+ul {
+	list-style: lower-roman;
+}
+
+table tr, 
+table td{
+	padding: 5px;
+	font-size: 1.2rem;
+	background-color: rgba(255, 255, 255, .8);
+}
+
+a:link {
+	color: red;
+
+}
+
+a:visited {
+	color:red;
+}
+
+a:hover {
+	font-size: 2rem;
+}
+
+a:active {
+	color: black;
+}
+
+.wrapper {
+	background-color: rgba(255, 255, 255, .9);
+}
+
+
+
+
+

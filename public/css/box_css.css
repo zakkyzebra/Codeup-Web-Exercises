@@ -1,0 +1,136 @@
+/*DIV CSS FOR ALL BOXES*/
+/*div {
+	height: 50px;
+	width: 150px;
+	padding: 0px 10px 20px 10px;
+	border: 1px solid black;
+	font-weight: bold;
+}*/
+
+#red {
+	color: white;
+	background-color: red;
+	height: 50px;
+	width: 150px;
+	padding: 0px 10px 20px 10px;
+	margin: 0px 0px 10px 0px;
+	border: 1px solid black;
+	font-weight: bold;
+}
+
+
+#orange {
+	color: white;
+	background-color: orange;
+	height: 50px;
+	width: 150px;
+	padding: 0px 10px 20px 10px;
+	margin: 0px 0px 10px 30px;
+	border: 1px solid black;
+	font-weight: bold;
+}
+
+#yellow {
+	color: black;
+	background-color: yellow;
+	height: 50px;
+	width: 150px;
+	padding: 0px 10px 20px 10px;
+	margin: 0px 0px 10px 60px;
+	border: 1px solid black;
+	font-weight: bold;
+}
+
+#green {
+	color: white;
+	background-color: green;
+	height: 50px;
+	width: 150px;
+	padding: 0px 10px 20px 10px;
+	margin: 0px 0px 10px 90px;
+	border: 1px solid black;
+	font-weight: bold;
+}
+
+#blue {
+	color: white;
+	background-color: blue;
+	height: 50px;
+	width: 150px;
+	padding: 0px 10px 20px 10px;
+	margin: 0px 0px 10px 120px;
+	border: 1px solid black;
+	font-weight: bold;
+}
+
+#purple {
+	color: white;
+	background-color: purple;
+	height: 50px;
+	width: 150px;
+	padding: 0px 10px 20px 10px;
+	margin: 0px 0px 0px 150px;
+	border: 1px solid black;
+	font-weight: bold;
+}
+
+a:link {
+	color: black;
+
+}
+
+a:visited {
+	color:black;
+}
+
+a:hover {
+	font-size: 1.1em;
+}
+
+a:active {
+	color: red;
+}
+
+body {
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+	font-family: "Comic Sans MS";
+}
+
+#red:hover {
+	color: red;
+	background-color: purple;
+	font-size: 1.3em;
+}
+#orange:hover {
+	color: orange;
+	background-color: red;
+	font-size: 1.3em;
+}
+#yellow:hover {
+	color: yellow;
+	background-color: orange;
+	font-size: 1.3em;
+}
+#green:hover {
+	color: green;
+	background-color: yellow;
+	font-size: 1.3em;
+}
+#blue:hover {
+	color: blue;
+	background-color: green;
+	font-size: 1.3em;
+}
+#purple:hover {
+	color: purple;
+	background-color: blue;
+	font-size: 1.3em;
+}
+
+body:hover{ 
+	background-image: url("http://ak-hdl.buzzfed.com/static/enhanced/web03/2011/11/11/16/enhanced-buzz-22130-1321048739-9.jpg");
+}
+
+
