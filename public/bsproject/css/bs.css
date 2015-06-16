@@ -5,3 +5,23 @@
 span.subheading {
 	background-color: rgba(0,0,0,0.5);
 }
+
+.navbar-custom .navbar-brand.aboutnav{
+	color: rgb(100,100,100);
+}
+
+.page-heading.aboutnav {
+	color: rgb(100,100,100);
+}
+
+.subheading.aboutnav{
+	background-color: rgb(255,255,255);
+}
+
+#paininthe li a{
+	color: rgb(150,150,150);
+}
+
+body {
+	background-color: blue;
+}
