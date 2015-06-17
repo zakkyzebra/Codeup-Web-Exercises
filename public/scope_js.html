@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+</head>
+<body>
+	<script type="text/javascript">
+		"use strict";
+		(function(){
+			var name1;
+
+			do {
+				name1 = prompt("What is your name?");
+			}while(!name1);
+
+			alert('Welcome ' + name1 + "!");
+
+			var pizza = confirm("Do you like pizza, " + name1 + "?")
+			if(pizza){
+				alert('Heck ya! I do, too!')
+			}
+		})();
+
+	</script>
+</body>
+</html>
+
