@@ -6,25 +6,17 @@
 <body>
 
 	<script type="text/javascript">
-	"use strict";
-// todo:
-// Create an array of 4 names using literal array notation, in a variable called 'names'.
+		"use strict";
 
-// todo:
-// Create a log statement that will log the number of elements in the names array.
+		var names = ['Largon', 'Delgato', 'Speedy', 'Gonzales'];
 
-// todo:
-// Create log statements that will print each of the names array elements individually.
+		for (var i = 0; i < names.length; i++) {
+		    console.log('The name at index ' + i + ' is: ' + names[i]);
+		}
 
-var names = ['Largon', 'Delgato', 'Speedy', 'Gonzales'];
-
-for (var i = 0; i < names.length; i++) {
-    console.log('The name at index ' + i + ' is: ' + names[i]);
-}
-
-names.forEach(function (element, index, array) {
-	console.log('the name at index ' + index + ' is: ' + element);
-});
+		names.forEach(function (element, index, array) {
+			console.log('the name at index ' + index + ' is: ' + element);
+		});
 
 
 
