@@ -5,14 +5,17 @@
 </head>
 <body>
 	<script type="text/javascript">
-		
+		"use strict";
+
+		var name1;
+
 		do {
-			var name = prompt("What is your name?");
-		}while(!name);
+			name1 = prompt("What is your name?");
+		}while(!name1);
 
-		alert('Welcome ' + name + "!");
+		alert('Welcome ' + name1 + "!");
 
-		var pizza = confirm("Do you like pizza, " + name + "?")
+		var pizza = confirm("Do you like pizza, " + name1 + "?")
 		if(pizza){
 			alert('Heck ya! I do, too!')
 		}
