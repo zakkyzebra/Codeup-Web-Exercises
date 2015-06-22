@@ -25,10 +25,9 @@
             detonationTimer--;
 
         };
+
         var intervalId = setInterval(updateTimer, 1000);
 
-        // TODO: When this function runs, it needs to
-        // cancel the interval/timeout for updateTimer()
         function defuseTheBOM()
         {
             var timeoutId = setTimeout(function () {
@@ -45,6 +44,7 @@
         // We will learn about events in the DOM lessons
         var defuser = document.getElementById('defuser');
         defuser.addEventListener('click', defuseTheBOM, false);
+        
     </script>
 </body>
 </html>
