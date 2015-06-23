@@ -12,6 +12,7 @@
     <button id="btn4">Finish Mission</button>
 
     <h1 id="main-header">Hello World!</h1>
+
     <ul>
         <li data-dbid="1">Item 1</li>
         <li data-dbid="2">Item 2</li>
@@ -19,7 +20,9 @@
         <li data-dbid="4">Item 4</li>
         <li data-dbid="5">Item 5</li>
     </ul>
+
     <h2 id="sub-header">Hello Again.</h2>
+
     <p class="sub-paragraph">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -33,19 +36,21 @@
     <script>
         "use strict";
         (function() {
+            //these variables grab the certain sections to be modified
             var mainHeader = document.getElementById('main-header');
             var subHeader = document.getElementById('sub-header');
             var listItems = document.getElementsByTagName('li');
             var subParagraphs = document.getElementsByClassName('sub-paragraph');
-
+            //FUNCTIONS();
+            //this changes the main headers text
             var listener1 = function (event) {
                 mainHeader.innerHTML = "JavaScript is Cool";
             }
-
+            //this changes the subheading's color
             var listener2 = function (event) {
                 subHeader.style.color = "#00F";
             }
-
+            //this changes the first list items color amd checks every button and colors every other one
             var listener3 = function (event) {
                 for (var i = 0; i < listItems.length; i++){
                     if (i == 0){
@@ -55,13 +60,11 @@
                     }
                 }             
             }
-
+            //this changes the paragraph's text
             var listener4 = function (event) {
                 subParagraphs[0].innerHTML = "Mission Accomplished";
             }
-
-
-
+            //these listeners are to grab certain buttons and give them a click action
             document.getElementById('btn1').addEventListener('click', listener1, false);
             document.getElementById('btn2').addEventListener('click', listener2, false);
             document.getElementById('btn3').addEventListener('click', listener3, false);

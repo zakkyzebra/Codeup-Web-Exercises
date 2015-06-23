@@ -5,14 +5,17 @@
     <link rel="stylesheet" type="text/css" href="css/calc.css">
 </head>
 <body>
+
     <!--div container to control calculator size-->
     <div class="container">
+
         <!--input display. shows the buttons you push-->
         <div class="display">
             <input type="text" readonly size="18" id="display1">
             <input type="text" readonly size="1" id="display2">
             <input type="text" readonly size="18" id="display3">
         </div>
+
         <!--CALCULATOR BUTTONS
         Calculator buttons. easily customizable-->
         <div class="keys">
@@ -24,7 +27,7 @@
             </p>
             <p>
                 <input type="button" class="grayButton" value="7" onclick='changeDisplay("7")'>
-                <input type="button"class="grayButton" value="8" onclick='changeDisplay("8")'>
+                <input type="button" class="grayButton" value="8" onclick='changeDisplay("8")'>
                 <input type="button" class="grayButton" value="9" onclick='changeDisplay("9")'>
                 <input type="button" class="lightGrayButton" value="*" onclick='mathOperator("*")'>
             </p>
@@ -41,14 +44,17 @@
                 <input type="button" class="lightGrayButton" value="+" onclick='mathOperator("+")'>
             </p>
             <p>
-                <input type="button"  class="grayButton" value="0" onclick='changeDisplay("0")'>
+                <input type="button" class="grayButton" value="0" onclick='changeDisplay("0")'>
                 <input type="button" class="grayButton" value="." onclick='changeDisplay(".")'>
                 <input type="button" class="orangeButton" value="=" onclick='sum()'>
                 <input type="button" class="lightGrayButton" value="/" onclick='mathOperator("/")'>
             </p>
         </div>
     </div>
+
+    <!--START JAVASCRIPT HERE -->
     <script type="text/javascript">
+
         //FUNCTIONS
         //clear function. changes value to ("") empty string
         function clearAll(val){
@@ -57,8 +63,8 @@
             document.getElementById("display3").value=val;
             whatDisplay = 0;
         }
-        //sum button. submit everything in display div to be summed. if it comes back with an error, display error.
- 
+
+        //sum button. submit everything in all 3 display to be summed. if it comes back with an error, display error.
         function sum() { 
                 var mathThis = document.getElementById('display1').value + document.getElementById('display2').value + document.getElementById('display3').value;
                 document.getElementById("display1").value=eval(mathThis); 
@@ -87,6 +93,7 @@
         }, interval);
         }
 
+        //tells browser where to place the input
         var whatDisplay = 0;
         function changeDisplay(val){
             if (whatDisplay === 0){
@@ -96,6 +103,7 @@
             }
         }
 
+        //changes the placing of input whenever an operator is input
         function mathOperator (val){
             if (whatDisplay === 0) {
                 document.getElementById("display2").value+=val;

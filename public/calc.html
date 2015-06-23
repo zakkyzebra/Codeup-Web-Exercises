@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="css/calc.css">
+</head>
+<body>
+
+    <!--div container to control calculator size-->
+    <div class="container">
+
+        <!--input display. shows the buttons you push-->
+        <div class="display">
+            <input type="text" readonly size="18" id="display1">
+            <input type="text" readonly size="1" id="display2">
+            <input type="text" readonly size="18" id="display3">
+        </div>
+
+        <!--CALCULATOR BUTTONS
+        Calculator buttons. easily customizable-->
+        <div class="keys">
+            <p>
+                <input type="button" id="buttonClear" class="redButton"  value="C">
+                <input type="button" id="button?" class="redButton"  value="?">
+                <input type="button" id="button(" class="lightGrayButton"  value="(">
+                <input type="button" id="button)" class="lightGrayButton"  value=")">
+            </p> 
+            <p>
+                <input type="button" id="button7" class="grayButton" value="7" >
+                <input type="button" id="button8" class="grayButton" value="8" >
+                <input type="button" id="button9" class="grayButton" value="9" >
+                <input type="button" id="button*" class="lightGrayButton" value="*" >
+            </p>
+            <p>
+                <input type="button" id="button4" class="grayButton" value="4" >
+                <input type="button" id="button5" class="grayButton" value="5" >
+                <input type="button" id="button6" class="grayButton" value="6" >
+                <input type="button" id="button-" class="lightGrayButton" value="-" >
+            </p>
+            <p>
+                <input type="button" id="button1" class="grayButton" value="1" >
+                <input type="button" id="button2" class="grayButton" value="2" >
+                <input type="button" id="button3" class="grayButton" value="3" >
+                <input type="button" id="button+" class="lightGrayButton" value="+" >
+            </p>
+            <p>
+                <input type="button" id="button0" class="grayButton" value="0" >
+                <input type="button" id="button." class="grayButton" value="." >
+                <input type="button" id="button=" class="orangeButton" value="=" >
+                <input type="button" id="button/" class="lightGrayButton" value="/" >
+            </p>
+        </div>
+    </div>
+
+    <!--START JAVASCRIPT HERE -->
+    <script type="text/javascript">
+
+        //FUNCTIONS
+        //clear function. changes value to ("") empty string
+        var listener3 = function clearAll(val){
+            document.getElementById("display1").value="";
+            document.getElementById("display2").value="";
+            document.getElementById("display3").value="";
+            whatDisplay = 0;
+        }
+
+        //sum button. submit everything in all 3 display to be summed. if it comes back with an error, display error.
+        var listener4 = function sum() { 
+                var mathThis = document.getElementById('display1').value + document.getElementById('display2').value + document.getElementById('display3').value;
+                document.getElementById("display1").value=eval(mathThis); 
+                document.getElementById("display2").value="";
+                document.getElementById("display3").value="";
+                whatDisplay = 0;
+            } 
+
+        //tells browser where to place the input
+        var whatDisplay = 0;
+        var listener1 = function doSomeMath(val){
+            if (whatDisplay === 0){
+                document.getElementById("display1").value+=value;
+            } else {    
+                document.getElementById("display3").value+=val;
+            }
+        }
+
+        //changes the placing of input whenever an operator is input
+        var listener2 = function mathOperator (val){
+            if (whatDisplay === 0) {
+                document.getElementById("display2").value+=val;
+                whatDisplay+=1;
+            } else {
+                document.getElementById("display2").value+=val;
+                whatDisplay-=1;
+            }
+        }
+
+
+        document.getElementById('button1').addEventListener('click', listener1, false);
+        document.getElementById('button2').addEventListener('click', listener1, false);
+        document.getElementById('button3').addEventListener('click', listener1, false);
+        document.getElementById('button4').addEventListener('click', listener1, false);
+        document.getElementById('button5').addEventListener('click', listener1, false);
+        document.getElementById('button6').addEventListener('click', listener1, false);
+        document.getElementById('button7').addEventListener('click', listener1, false);
+        document.getElementById('button8').addEventListener('click', listener1, false);
+        document.getElementById('button9').addEventListener('click', listener1, false);
+        document.getElementById('button0').addEventListener('click', listener1, false);
+        document.getElementById('button-').addEventListener('click', listener2, false);
+        document.getElementById('button+').addEventListener('click', listener2, false);
+        document.getElementById('button/').addEventListener('click', listener2, false);
+        document.getElementById('button*').addEventListener('click', listener2, false);
+        document.getElementById('button.').addEventListener('click', listener1, false);
+        document.getElementById('buttonClear').addEventListener('click', listener3, false);
+        document.getElementById('button=').addEventListener('click', listener4, false);
+        document.getElementById('button(').addEventListener('click', listener1, false);
+        document.getElementById('button)').addEventListener('click', listener1, false);
+
+    </script>
+</body>
+</html>
+
+
+

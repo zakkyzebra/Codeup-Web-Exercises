@@ -6,16 +6,26 @@
 <body>
 
 	<script type="text/javascript">
+function xorSwap(array)
+{
+	array = ['a','b','c','d','e'];
+    var i = null;
+    var r = null;
+    var length = array.length;
+    for (i = 0, r = length - 1; i < r; i += 1, r -= 1)
+    {
+        var left = array[i];
+        var right = array[r];
+        left ^= right;
+        right ^= left;
+        left ^= right;
+        array[i] = left;
+        array[r] = right;
+    }
+    return array;
+}
 
-		function(reverseThis){
-			for (var i = 0; i < reverseThis.length; i++) {
-				reverseThis[i]
-			};
-
-		}
-
-		var reverseThis = ['a','b','c','d','e']
-
+console.log(xorSwap());
 	</script>
 
 </body>
