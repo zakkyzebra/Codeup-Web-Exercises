@@ -1,0 +1,56 @@
+input.grayButton {
+	background-color: #AAA;
+}
+
+input.redButton {
+	background-color: #F00;
+}
+
+input.orangeButton {
+	background-color: #FFA500;
+}
+
+input.lightGrayButton {
+	background-color: #EEE;
+}
+
+.keys input {
+	width: 30px;
+	margin-left: 2px;
+	margin-right: 1px;
+}
+
+.display input {
+	width: 30px;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+.container {
+	width: 145px;
+	border: 2px solid #CCC;
+	background-color: #000;
+}
+
+#display1 {
+	width: 50px;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+#display2 {
+	width: 10px;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+#display3 {
+	width: 50px;
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+
+
+
+
