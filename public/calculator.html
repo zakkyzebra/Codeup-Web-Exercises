@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="css/calc.css">
+</head>
+<body>
+    <!--div container to control calculator size-->
+    <div class="container">
+        <!--input display. shows the buttons you push-->
+        <div class="display">
+            <input type="text" readonly size="18" id="display1">
+            <input type="text" readonly size="1" id="display2">
+            <input type="text" readonly size="18" id="display3">
+        </div>
+        <!--CALCULATOR BUTTONS
+        Calculator buttons. easily customizable-->
+        <div class="keys">
+            <p>
+                <input type="button" class="redButton"  value="C" onclick='clearAll("")'>
+                <input type="button" class="redButton"  value="?" onclick='whoMadeThis()'>
+                <input type="button" class="lightGrayButton"  value="(" onclick='changeDisplay("(")'>
+                <input type="button" class="lightGrayButton"  value=")" onclick='changeDisplay(")")'>
+            </p>
+            <p>
+                <input type="button" class="grayButton" value="7" onclick='changeDisplay("7")'>
+                <input type="button"class="grayButton" value="8" onclick='changeDisplay("8")'>
+                <input type="button" class="grayButton" value="9" onclick='changeDisplay("9")'>
+                <input type="button" class="lightGrayButton" value="*" onclick='mathOperator("*")'>
+            </p>
+            <p>
+                <input type="button" class="grayButton" value="4" onclick='changeDisplay("4")'>
+                <input type="button" class="grayButton" value="5" onclick='changeDisplay("5")'>
+                <input type="button" class="grayButton" value="6" onclick='changeDisplay("6")'>
+                <input type="button" class="lightGrayButton" value="-" onclick='mathOperator("-")'>
+            </p>
+            <p>
+                <input type="button" class="grayButton" value="1" onclick='changeDisplay("1")'>
+                <input type="button" class="grayButton" value="2" onclick='changeDisplay("2")'>
+                <input type="button" class="grayButton" value="3" onclick='changeDisplay("3")'>
+                <input type="button" class="lightGrayButton" value="+" onclick='mathOperator("+")'>
+            </p>
+            <p>
+                <input type="button"  class="grayButton" value="0" onclick='changeDisplay("0")'>
+                <input type="button" class="grayButton" value="." onclick='changeDisplay(".")'>
+                <input type="button" class="orangeButton" value="=" onclick='sum()'>
+                <input type="button" class="lightGrayButton" value="/" onclick='mathOperator("/")'>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        //FUNCTIONS
+        //clear function. changes value to ("") empty string
+        function clearAll(val){
+            document.getElementById("display1").value=val;
+            document.getElementById("display2").value=val;
+            document.getElementById("display3").value=val;
+            whatDisplay = 0;
+        }
+        //sum button. submit everything in display div to be summed. if it comes back with an error, display error.
+ 
+        function sum() { 
+                var mathThis = document.getElementById('display1').value + document.getElementById('display2').value + document.getElementById('display3').value;
+                document.getElementById("display1").value=eval(mathThis); 
+                document.getElementById("display2").value="";
+                document.getElementById("display3").value="";
+                whatDisplay = 0;
+            } 
+          
+        //when the "?" is pushed, show the creator of the calculator.
+        function whoMadeThis () {
+        var messageButton = "Created by Zachary";
+        var count = 0;
+        var max = messageButton.length;
+        var interval = 200; 
+        var intervalId = setInterval(function () {
+            if (count >= max) {
+                clearInterval(intervalId);
+            } else if (count == 0){
+                document.getElementById("d").value="";
+                document.getElementById("d").value+=messageButton[count];
+                count++;  
+            }   else {
+                document.getElementById("d").value+=messageButton[count];
+                count++;
+            }
+        }, interval);
+        }
+
+        var whatDisplay = 0;
+        function changeDisplay(val){
+            if (whatDisplay === 0){
+                document.getElementById("display1").value+=val;
+            } else {    
+                document.getElementById("display3").value+=val;
+            }
+        }
+
+        function mathOperator (val){
+            if (whatDisplay === 0) {
+                document.getElementById("display2").value+=val;
+                whatDisplay+=1;
+            } else {
+                document.getElementById("display2").value+=val;
+                whatDisplay-=1;
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+
+
+
