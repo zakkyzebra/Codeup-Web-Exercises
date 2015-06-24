@@ -1,26 +1,26 @@
-button.grayButton {
+input.grayButton {
 	background-color: #AAA;
 }
 
-button.redButton {
+input.redButton {
 	background-color: #F00;
 }
 
-button.orangeButton {
+input.orangeButton {
 	background-color: #FFA500;
 }
 
-button.lightGrayButton {
+input.lightGrayButton {
 	background-color: #EEE;
 }
 
-.keys button {
+.keys input {
 	width: 30px;
 	margin-left: 2px;
 	margin-right: 1px;
 }
 
-.display button {
+.display input {
 	width: 30px;
 	margin-left: 5px;
 	margin-top: 5px;
