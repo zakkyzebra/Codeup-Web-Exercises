@@ -20,100 +20,137 @@
         Calculator buttons. easily customizable-->
         <div class="keys">
             <p>
-                <input type="button" class="redButton"  value="C" onclick='clearAll("")'>
-                <input type="button" class="redButton"  value="?" onclick='whoMadeThis()'>
-                <input type="button" class="lightGrayButton"  value="(" onclick='changeDisplay("(")'>
-                <input type="button" class="lightGrayButton"  value=")" onclick='changeDisplay(")")'>
+                <input type="button" id="buttonClear" class="redButton"  value="C">
+                <input type="button" id="button?" class="redButton"  value="?">
+            </p> 
+            <p>
+                <input type="button" id="button7" class="grayButton" value="7" >
+                <input type="button" id="button8" class="grayButton" value="8" >
+                <input type="button" id="button9" class="grayButton" value="9" >
+                <input type="button" id="button*" class="lightGrayButton" value="*">
             </p>
             <p>
-                <input type="button" class="grayButton" value="7" onclick='changeDisplay("7")'>
-                <input type="button" class="grayButton" value="8" onclick='changeDisplay("8")'>
-                <input type="button" class="grayButton" value="9" onclick='changeDisplay("9")'>
-                <input type="button" class="lightGrayButton" value="*" onclick='mathOperator("*")'>
+                <input type="button" id="button4" class="grayButton" value="4" >
+                <input type="button" id="button5" class="grayButton" value="5" >
+                <input type="button" id="button6" class="grayButton" value="6" >
+                <input type="button" id="button-" class="lightGrayButton" value="-">
             </p>
             <p>
-                <input type="button" class="grayButton" value="4" onclick='changeDisplay("4")'>
-                <input type="button" class="grayButton" value="5" onclick='changeDisplay("5")'>
-                <input type="button" class="grayButton" value="6" onclick='changeDisplay("6")'>
-                <input type="button" class="lightGrayButton" value="-" onclick='mathOperator("-")'>
+                <input type="button" id="button1" class="grayButton" value="1" >
+                <input type="button" id="button2" class="grayButton" value="2" >
+                <input type="button" id="button3" class="grayButton" value="3" >
+                <input type="button" id="button+" class="lightGrayButton" value="+">
             </p>
             <p>
-                <input type="button" class="grayButton" value="1" onclick='changeDisplay("1")'>
-                <input type="button" class="grayButton" value="2" onclick='changeDisplay("2")'>
-                <input type="button" class="grayButton" value="3" onclick='changeDisplay("3")'>
-                <input type="button" class="lightGrayButton" value="+" onclick='mathOperator("+")'>
-            </p>
-            <p>
-                <input type="button" class="grayButton" value="0" onclick='changeDisplay("0")'>
-                <input type="button" class="grayButton" value="." onclick='changeDisplay(".")'>
-                <input type="button" class="orangeButton" value="=" onclick='sum()'>
-                <input type="button" class="lightGrayButton" value="/" onclick='mathOperator("/")'>
+                <input type="button" id="button0" class="grayButton" value="0" >
+                <input type="button" id="button." class="lightGrayButton" value=".">
+                <input type="button" id="button=" class="orangeButton" value="=" >
+                <input type="button" id="button/" class="lightGrayButton" value="/"
             </p>
         </div>
     </div>
 
     <!--START JAVASCRIPT HERE -->
     <script type="text/javascript">
-
+    "use strict";
+       
         //FUNCTIONS
-        //clear function. changes value to ("") empty string
-        function clearAll(val){
-            document.getElementById("display1").value=val;
-            document.getElementById("display2").value=val;
-            document.getElementById("display3").value=val;
-            whatDisplay = 0;
-        }
-
-        //sum button. submit everything in all 3 display to be summed. if it comes back with an error, display error.
-        function sum() { 
-                var mathThis = document.getElementById('display1').value + document.getElementById('display2').value + document.getElementById('display3').value;
-                document.getElementById("display1").value=eval(mathThis); 
-                document.getElementById("display2").value="";
-                document.getElementById("display3").value="";
-                whatDisplay = 0;
-            } 
-          
-        //when the "?" is pushed, show the creator of the calculator.
-        function whoMadeThis () {
-        var messageButton = "Created by Zachary";
-        var count = 0;
-        var max = messageButton.length;
-        var interval = 200; 
-        var intervalId = setInterval(function () {
-            if (count >= max) {
-                clearInterval(intervalId);
-            } else if (count == 0){
-                document.getElementById("d").value="";
-                document.getElementById("d").value+=messageButton[count];
-                count++;  
-            }   else {
-                document.getElementById("d").value+=messageButton[count];
-                count++;
-            }
-        }, interval);
-        }
 
         //tells browser where to place the input
-        var whatDisplay = 0;
-        function changeDisplay(val){
-            if (whatDisplay === 0){
-                document.getElementById("display1").value+=val;
+        var whatDisplay = false;
+        function numberInput(val){
+            if (whatDisplay === false){
+                document.getElementById("display1").value+=this.value;
             } else {    
-                document.getElementById("display3").value+=val;
+                document.getElementById("display3").value+=this.value;
             }
         }
 
         //changes the placing of input whenever an operator is input
         function mathOperator (val){
-            if (whatDisplay === 0) {
-                document.getElementById("display2").value+=val;
-                whatDisplay+=1;
+            if (whatDisplay === false) {
+                document.getElementById("display2").value=this.value;
+                whatDisplay = true;
+                enablePeriod();
             } else {
-                document.getElementById("display2").value+=val;
-                whatDisplay-=1;
+                document.getElementById("display2").value=this.value;
             }
         }
 
+        //clear function. changes value to ("") empty string
+        function clearAll(){
+            document.getElementById("display1").value="";
+            document.getElementById("display2").value="";
+            document.getElementById("display3").value="";
+            whatDisplay = false;
+            enablePeriod();
+        }
+        
+        //variables for the sum function
+        var leftBox = document.getElementById("display1");
+        var rightBox = document.getElementById("display3");
+        var operationVar = document.getElementById("display2");
+        var result;
+        //sum button. submit everything in all 3 display to be summed. if it comes back with an error, display error.
+        function equate() {
+            if(operationVar.value == '+'){
+                result = parseFloat(leftBox.value) + parseFloat(rightBox.value);
+                leftBox.value = result;
+                display2.value = '';
+                display3.value = '';
+                whatDisplay = false;
+            }else if(operationVar.value == '-'){
+                result = parseFloat(leftBox.value) - parseFloat(rightBox.value);
+                leftBox.value = result;
+                display2.value = '';
+                display3.value = '';
+                whatDisplay = false;
+            }else if(operationVar.value == '/'){
+                result = parseFloat(leftBox.value) / parseFloat(rightBox.value);
+                leftBox.value = result;
+                display2.value = '';
+                display3.value = '';
+                whatDisplay = false;
+            }else if(operationVar.value == '*'){
+                result = parseFloat(leftBox.value) * parseFloat(rightBox.value);
+                leftBox.value = result;
+                display2.value = '';
+                display3.value = '';
+                whatDisplay = false;
+        }
+    }
+
+        
+
+        //disables the decimal
+        function disablePeriod(){
+            document.getElementsByClassName('lightGrayButton')[3].setAttribute('disabled', 'disabled');
+        }    
+        //reenables the decimal
+        function enablePeriod(){
+            document.getElementsByClassName('lightGrayButton')[3].removeAttribute('disabled');
+        }
+
+
+        //BUTTON LISTENERSSSSSSS. tells the buttons what to do on click
+        document.getElementById('button1').addEventListener('click', numberInput);
+        document.getElementById('button2').addEventListener('click', numberInput);
+        document.getElementById('button3').addEventListener('click', numberInput);
+        document.getElementById('button4').addEventListener('click', numberInput);
+        document.getElementById('button5').addEventListener('click', numberInput);
+        document.getElementById('button6').addEventListener('click', numberInput);
+        document.getElementById('button7').addEventListener('click', numberInput);
+        document.getElementById('button8').addEventListener('click', numberInput);
+        document.getElementById('button9').addEventListener('click', numberInput);
+        document.getElementById('button0').addEventListener('click', numberInput);
+        document.getElementById('button-').addEventListener('click', mathOperator);
+        document.getElementById('button+').addEventListener('click', mathOperator);
+        document.getElementById('button/').addEventListener('click', mathOperator);
+        document.getElementById('button*').addEventListener('click', mathOperator);
+        document.getElementById('button.').addEventListener('click', numberInput);
+        document.getElementById('button.').addEventListener('click', disablePeriod);
+        document.getElementById('buttonClear').addEventListener('click', clearAll);
+        document.getElementById('button=').addEventListener('click', equate);
 
     </script>
 </body>
