@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JQuery</title>
+	<style type="text/css">
+	body{
+		background-color: red;
+	}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<h1>Hello Jquery</h1>
+		<p class="paragraphsTop" id="paragraph1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p class="codeup" id="paragraph2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p class="paragraphsTop" id="paragraph3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+		<ul>
+			<li class="odd" id="listItem1">Text 1</li>
+			<li class="even" id="listItem2">Text 2</li>
+			<li class="odd" id="listItem3">Text 3</li>
+			<li class="even" id="listItem4">Text 4</li>
+			<li class="odd" id="listItem5">Text 5</li>
+			<li class="even" id="listItem6">Text 6</li>
+			<li class="odd" id="listItem7">Text 7</li>
+			<li class="even" id="listItem8">Text 8</li>
+			<li class="odd" id="listItem9">Text 9</li>
+			<li class="even" id="listItem10">Text 10</li>
+			<li class="odd" id="listItem11">Text 11</li>
+			<li class="even" id="listItem12">Text 12</li>
+			<li class="odd" id="listItem13">Text 13</li>
+			<li class="even" id="listItem14">Text 14</li>
+			<li class="odd" id="listItem15">Text 15</li>
+			<li class="even" id="listItem16">Text 16</li>
+			<li class="odd" id="listItem17">Text 17</li>
+			<li class="even" id="listItem18">Text 18</li>
+		</ul>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<script type="text/javascript">
+	"use strict";
+
+		$('.even').css('border', '1px solid red');
+		$('.odd').css({
+			'border': '1px solid blue',
+		});
+		$('body').css('background-color', 'white');
+		$('li').css('font-size','20px');
+		$('h1').css('background-color','yellow');
+		$('p').css('background-color','yellow');
+		$('li').css('background-color','yellow');
+		alert($('h1').html())
+
+	</script>
+
+</body>
+</html>
