@@ -1,0 +1,111 @@
+<html>
+<head>
+  <style type="text/css">
+  #map-canvas1 {
+    width: 320px;
+    height: 480px;
+    display: inline-block;
+    margin-left: 15px;
+  }
+  #map-canvas2 {
+    width: 320px;
+    height: 480px;
+    display: inline-block;
+    margin-left: 25px;
+  }
+  #map-canvas3 {
+    width: 320px;
+    height: 480px;
+    display: inline-block;
+    margin-left: 25px;
+  }
+
+
+  </style>
+</head>
+<body>
+  <!-- div to hold map -->
+  <div id="map-canvas1"></div>
+  <div id="map-canvas2"></div>
+  <div id="map-canvas3"></div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaAZUIDBgdbxVygyrXjda2lDhpi7DP_kM"></script>
+
+  <script type="text/javascript">
+	(function () {
+	    var mapOptions = {
+	      zoom: 20,
+	      center: { lat: 29.423705, lng: -98.488286 }
+	    };
+
+	    var map = new google.maps.Map(document.getElementById("map-canvas1"), mapOptions);
+
+
+	    var shilos = { lat: 29.423705, lng: -98.488286 };
+
+	    var marker = new google.maps.Marker({
+	      position: shilos,
+	      map: map
+	    });
+
+	    var infowindow = new google.maps.InfoWindow({
+	        content: "Schilo's Delicatessen<br>Changing the world, one rootbeer at a time"
+	    });
+
+	    infowindow.open(map,marker);
+	})();
+	
+	(function () {
+	    var mapOptions = {
+	      zoom: 15,
+	      center: { lat: 29.423705, lng: -98.488286 }
+	    };
+
+	    var map = new google.maps.Map(document.getElementById("map-canvas2"), mapOptions);
+
+
+	    var shilos = { lat: 29.423705, lng: -98.488286 };
+
+	    var marker = new google.maps.Marker({
+	      position: shilos,
+	      map: map
+	    });
+
+	    var infowindow = new google.maps.InfoWindow({
+	        content: "Schilo's Delicatessen<br>Changing the world, one rootbeer at a time"
+	    });
+
+	    infowindow.open(map,marker);
+	})();
+
+	(function () {
+	    var mapOptions = {
+	      zoom: 5,
+	      center: { lat: 29.423705, lng: -98.488286 }
+	    };
+
+	    var map = new google.maps.Map(document.getElementById("map-canvas3"), mapOptions);
+
+
+	    var shilos = { lat: 29.423705, lng: -98.488286 };
+
+	    var marker = new google.maps.Marker({
+	      position: shilos,
+	      map: map
+	    });
+
+	    var infowindow = new google.maps.InfoWindow({
+	        content: "Schilo's Delicatessen<br>Changing the world, one rootbeer at a time"
+	    });
+
+	    infowindow.open(map,marker);
+	})();
+
+
+
+
+
+  </script>
+</body>
+</html>
+
