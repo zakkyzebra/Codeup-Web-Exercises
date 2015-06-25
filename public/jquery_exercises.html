@@ -2,11 +2,6 @@
 <html>
 <head>
 	<title>JQuery</title>
-	<style type="text/css">
-	body{
-		background-color: red;
-	}
-	</style>
 </head>
 <body>
 	<div id="div1">
@@ -57,17 +52,34 @@
 	<script type="text/javascript">
 	"use strict";
 
-		$('.even').css('border', '1px solid red');
-		$('.odd').css({
-			'border': '1px solid blue',
+		$('h1').click(function(){
+        	$(this).css('background-color', '#FF0');
 		});
-		$('body').css({
-			'background-color': 'white',
-			'font-family': 'Comic Sans MS'
+
+		$('p').dblclick(function(){
+        	$(this).css('font-size', '18px');
 		});
-		$('li').css('font-size','20px');
-		$('h1, p, li').css('background-color','yellow');
-		alert($('h1').html());
+
+		$('li').hover(function(){
+			$('li').css('color', 'red')
+		}, function(){
+			$('li').css('color', 'black')
+		});
+
+
+
+		$('body').click(function() {
+	    var onOrOff = $(this).data('onOrOff');  
+	    onOrOff = !onOrOff; 
+	    if (onOrOff) {
+	        $('body').css('font-family' , 'Comic Sans MS')
+	    } else {
+	        $('body').css('font-family' , 'Times New Roman')
+	    }
+		    $(this).data('onOrOff', onOrOff);  
+		});
+
+
 
 	</script>
 
