@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Konami Code</title>
+	<style type="text/css">
+	body{
+		font-family: "Comic Sans MS";
+	}
+	</style>
+</head>
+<body>
+
+
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script>
+	"use strict";
+    $(document).ready(function() {
+        var input = [];
+        var code = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+        var onlyOnce = false;
+        $("#hiddenLives").hide();
+        $(document).keydown(function(keyEvent) {
+          	input.push(keyEvent.keyCode);
+          	if (input.length > code.length) {
+          	 	input.shift(); 
+          	}
+          	if ( input.toString() == code.toString() && (onlyOnce == false) ) {
+            	$('#hiddenLives').slideDown(1);
+            	setTimeout(function(){
+	            	document.getElementById("RyuSpecial").play();
+            	}, 1492);
+            	onlyOnce = true;
+			} else if (input.toString() == code.toString() && (onlyOnce == true)){
+				alert("Whoa buddy. Slow down there. Getting a little greedy. I'll take one of those back");
+				document.getElementById('lives').innerHTML = parseInt(document.getElementById('lives').innerHTML) - 1;
+			}
+			
+        });
+    });
+
+
+	</script>
+
+    <div id="hiddenLives" class="real-big">
+      KONAMI OVERDRIVE You now have <span id="lives">2</span> lives.<br>Game Over
+      <img src=img/RyuSpecial.gif>
+    </div>
+    <div>
+		<audio id="RyuSpecial" src="img/RyuSpecial.mp3" preload="auto"</audio>
+	</div>
+
+    <h1>Welcome</h1>
+
+</body>
+</html>
