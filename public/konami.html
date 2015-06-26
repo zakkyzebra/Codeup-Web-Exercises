@@ -20,25 +20,22 @@
         var onlyOnce = false;
         $("#hiddenLives").hide();
         $(document).keydown(function(keyEvent) {
-          	input.push(keyEvent.keyCode);
+            input.push(keyEvent.keyCode);
           	if (input.length > code.length) {
-          	 	input.shift(); 
-          	}
-          	if ( input.toString() == code.toString() && (onlyOnce == false) ) {
-            	$('#hiddenLives').slideDown(1);
+                input.shift(); 
+          	} 
+            if ( input.toString() == code.toString() && (onlyOnce == false) ) {
+            	$('#hiddenLives').show(5);
             	setTimeout(function(){
 	            	document.getElementById("RyuSpecial").play();
             	}, 1492);
             	onlyOnce = true;
-			} else if (input.toString() == code.toString() && (onlyOnce == true)){
-				alert("Whoa buddy. Slow down there. Getting a little greedy. I'll take one of those back");
-				document.getElementById('lives').innerHTML = parseInt(document.getElementById('lives').innerHTML) - 1;
-			}
-			
+        		} else if (input.toString() == code.toString() && (onlyOnce == true) && (document.getElementById('lives').innerHTML > "0")){
+        				alert("Whoa buddy. Slow down there. Getting a little greedy. I'll take one of those back");
+        				document.getElementById('lives').innerHTML = parseInt(document.getElementById('lives').innerHTML) - 1;
+        		}
         });
     });
-
-
 	</script>
 
     <div id="hiddenLives" class="real-big">

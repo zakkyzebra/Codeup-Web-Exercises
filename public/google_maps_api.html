@@ -1,110 +1,122 @@
 <html>
 <head>
-  <style type="text/css">
-  #map-canvas1 {
-    width: 320px;
-    height: 480px;
-    display: inline-block;
-    margin-left: 15px;
-  }
-  #map-canvas2 {
-    width: 320px;
-    height: 480px;
-    display: inline-block;
-    margin-left: 25px;
-  }
-  #map-canvas3 {
-    width: 320px;
-    height: 480px;
-    display: inline-block;
-    margin-left: 25px;
-  }
-
-
-  </style>
+	<style type="text/css">
+		#map-canvas1 {
+		  width: 400px;
+		  height: 480px;
+		  display: inline-block;
+		  margin-left: 15px;
+		}
+		#map-canvas2 {
+		  width: 400px;
+		  height: 480px;
+		  display: inline-block;
+		  margin-left: 25px;
+		}
+		#map-canvas3 {
+		  width: 400px;
+		  height: 480px;
+		  display: inline-block;
+		  margin-left: 25px;
+		}
+	</style>
 </head>
 <body>
-  <!-- div to hold map -->
-  <div id="map-canvas1"></div>
-  <div id="map-canvas2"></div>
-  <div id="map-canvas3"></div>
+	<div id="map-canvas1"></div>
+	<div id="map-canvas2"></div>
+	<div id="map-canvas3"></div>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaAZUIDBgdbxVygyrXjda2lDhpi7DP_kM"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaAZUIDBgdbxVygyrXjda2lDhpi7DP_kM"></script>
 
-  <script type="text/javascript">
-	(function () {
-	    var mapOptions = {
-	      zoom: 20,
-	      center: { lat: 29.423705, lng: -98.488286 }
-	    };
+	<script type="text/javascript">
+  	"use strict";
+	(function(){		
+		var address = '424 E Commerce St San Antonio, TX 78205';
 
-	    var map = new google.maps.Map(document.getElementById("map-canvas1"), mapOptions);
+		var geocoder = new google.maps.Geocoder();
 
+		geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+			    var mapOptions = {
+			      zoom: 20,
+			      center: results[0].geometry.location
+			    }
+			    var map = new google.maps.Map(document.getElementById("map-canvas1"), mapOptions);
+			    var shilos = { lat: 29.423600, lng: -98.488286 };
 
-	    var shilos = { lat: 29.423705, lng: -98.488286 };
+			    var marker = new google.maps.Marker({
+			      position: shilos,
+			      map: map
+			    });
 
-	    var marker = new google.maps.Marker({
-	      position: shilos,
-	      map: map
-	    });
+			    var infowindow = new google.maps.InfoWindow({
+			        content: "Schilo's Delicatessen<br>Changing the world, one rootbeer at a time"
+			    });
 
-	    var infowindow = new google.maps.InfoWindow({
-	        content: "Schilo's Delicatessen<br>Changing the world, one rootbeer at a time"
-	    });
+			    infowindow.open(map,marker);
+			  } else {
+			    alert("Geocoding was not successful - STATUS: " + status);
+			  }
+		});
+	}());
+	(function(){		
+		var address = '424 E Commerce St San Antonio, TX 78205';
 
-	    infowindow.open(map,marker);
-	})();
-	
-	(function () {
-	    var mapOptions = {
-	      zoom: 15,
-	      center: { lat: 29.423705, lng: -98.488286 }
-	    };
+		var geocoder = new google.maps.Geocoder();
 
-	    var map = new google.maps.Map(document.getElementById("map-canvas2"), mapOptions);
+		geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+			    var mapOptions = {
+			      zoom: 15,
+			      center: results[0].geometry.location
+			    }
+			    var map = new google.maps.Map(document.getElementById("map-canvas2"), mapOptions);
+			    var shilos = { lat: 29.423705, lng: -98.488286 };
 
+			    var marker = new google.maps.Marker({
+			      position: shilos,
+			      map: map
+			    });
 
-	    var shilos = { lat: 29.423705, lng: -98.488286 };
+			    var infowindow = new google.maps.InfoWindow({
+			        content: "Schilo's Delicatessen<br>Changing the world, one rootbeer at a time"
+			    });
 
-	    var marker = new google.maps.Marker({
-	      position: shilos,
-	      map: map
-	    });
+			    infowindow.open(map,marker);
+			  } else {
+			    alert("Geocoding was not successful - STATUS: " + status);
+			  }
+		});
+	}());
+	(function(){		
+		var address = '424 E Commerce St San Antonio, TX 78205';
 
-	    var infowindow = new google.maps.InfoWindow({
-	        content: "Schilo's Delicatessen<br>Changing the world, one rootbeer at a time"
-	    });
+		var geocoder = new google.maps.Geocoder();
 
-	    infowindow.open(map,marker);
-	})();
+		geocoder.geocode( { 'address': address}, function(results, status) {
+		  	if (status == google.maps.GeocoderStatus.OK) {
+			    var mapOptions = {
+			     	zoom: 5,
+			     	center: results[0].geometry.location
+			    }
+			    var map = new google.maps.Map(document.getElementById("map-canvas3"), mapOptions);
+			    var shilos = { lat: 29.423705, lng: -98.488286 };
 
-	(function () {
-	    var mapOptions = {
-	      zoom: 5,
-	      center: { lat: 29.423705, lng: -98.488286 }
-	    };
+			    var marker = new google.maps.Marker({
+			      	position: shilos,
+			      	map: map
+			    });
 
-	    var map = new google.maps.Map(document.getElementById("map-canvas3"), mapOptions);
+			    var infowindow = new google.maps.InfoWindow({
+			        content: "Schilo's Delicatessen<br>Changing the world, one rootbeer at a time"
+			    });
 
-
-	    var shilos = { lat: 29.423705, lng: -98.488286 };
-
-	    var marker = new google.maps.Marker({
-	      position: shilos,
-	      map: map
-	    });
-
-	    var infowindow = new google.maps.InfoWindow({
-	        content: "Schilo's Delicatessen<br>Changing the world, one rootbeer at a time"
-	    });
-
-	    infowindow.open(map,marker);
-	})();
-
-
-
-
-
+			    infowindow.open(map,marker);
+			  	} else {
+			    	alert("Geocoding was not successful - STATUS: " + status);
+			  	}
+			});
+		}());
   </script>
 </body>
 </html>

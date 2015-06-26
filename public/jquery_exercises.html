@@ -69,13 +69,13 @@
 
 
 		$('body').click(function() {
-	    var onOrOff = $(this).data('onOrOff');  
-	    onOrOff = !onOrOff; 
-	    if (onOrOff) {
-	        $('body').css('font-family' , 'Comic Sans MS')
-	    } else {
-	        $('body').css('font-family' , 'Times New Roman')
-	    }
+		    var onOrOff = $(this).data('onOrOff');  
+		    onOrOff = !onOrOff; 
+		    if (onOrOff) {
+		        $(this).css('font-family' , 'Comic Sans MS')
+		    } else {
+		        $(this).css('font-family' , 'Times New Roman')
+		    }
 		    $(this).data('onOrOff', onOrOff);  
 		});
 

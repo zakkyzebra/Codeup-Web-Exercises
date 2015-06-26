@@ -3,48 +3,83 @@
 <head>
 	<title>JQUERY</title>
 	<style>
-	.invisible {
-		display: none;
-	}
-	.grayBack{
-		background-color: #EEE;
-	}
-	dl dt {
-		background-color: #fafdb4;
-	}
+		.invisible {
+			display: none;
+		}
+		.grayBack{
+			background-color: #EEE;
+		}
+		dl dt {
+			background-color: #fafdb4;
+		}
+		body {
+			font-family: "Comic Sans MS";
+		}
 	</style>
 </head>
 <body>
 	<dl>
-	  <dt>What exactly is a tree?</dt>
-	  <dd class="invisible grayBack">A plant that produces oxygen</dd>
-	  <dt>Why do we have trees?</dt>
-	  <dd class="invisible grayBack">A plant that produces oxygen</dd>
-	  <dt>What happens when a tree dies?</dt>
-	  <dd class="invisible grayBack">A plant that produces oxygen</dd>
-	  <dt>How many people plant trees?</dt>
-	  <dd class="invisible grayBack">A plant that produces oxygen</dd>
-	  <dt>Can I become a tree?</dt>
-	  <dd class="invisible grayBack">A plant that produces oxygen</dd>
-	  <dt>Can I be one with the trees?</dt>
-	  <dd class="invisible grayBack">A plant that produces oxygen</dd>
-	  <dt>If I try really hard to photosynthesize, will I be considered a tree?</dt>
-	  <dd class="invisible grayBack">A plant that produces oxygen</dd>
-	  <dt>How many trees does it take to screw in a lightbulb?</dt>
-	  <dd class="invisible grayBack">A plant that produces oxygen</dd>
-	  <dt>Trees?</dt>
-	  <dd class="invisible grayBack">A plant that produces oxygen</dd>
-	  <dt>Trees?</dt>
-	  <dd class="invisible grayBack">A plant that produces oxygen</dd>
-	</dl>
+		<dt>What exactly is a tree?</dt>
+		<dd class="invisible grayBack">A plant that produces oxygen</dd>
+		<dt>Why do we have trees?</dt>
+		<dd class="invisible grayBack">A plant that produces oxygen</dd>
+		<dt>What happens when a tree dies?</dt>
+		<dd class="invisible grayBack">A plant that produces oxygen</dd>
+		<dt>How many people plant trees?</dt>
+		<dd class="invisible grayBack">A plant that produces oxygen</dd>
+		<dt>Can I become a tree?</dt>
+		<dd class="invisible grayBack">A plant that produces oxygen</dd>
+		<dt>Can I be one with the trees?</dt>
+		<dd class="invisible grayBack">A plant that produces oxygen</dd>
+		<dt>If I try really hard to photosynthesize, will I be considered a tree?</dt>
+		<dd class="invisible grayBack">A plant that produces oxygen</dd>
+		<dt>How many trees does it take to screw in a lightbulb?</dt>
+		<dd class="invisible grayBack">A plant that produces oxygen</dd>
+		<dt>Trees?</dt>
+		<dd class="invisible grayBack">A plant that produces oxygen</dd>
+		<dt>Trees?</dt>
+	 	<dd class="invisible grayBack">A plant that produces oxygen</dd>
+	</dl> 
+	<h3>NATIONAL PARK 1</h3>
+	<ul>
+		<li>Fact 1</li>
+		<li>Fact 2</li>
+		<li>Fact 3</li>
+		<li>Fact 4</li>
+	</ul> 
+	<h3>NATIONAL PARK 2</h3>
+	<ul>
+		<li>Fact 1</li>
+		<li>Fact 2</li>
+		<li>Fact 3</li>
+		<li>Fact 4</li>
+	</ul> 
+	<h3>NATIONAL PARK 3</h3>
+	<ul>
+		<li>Fact 1</li>
+		<li>Fact 2</li>
+		<li>Fact 3</li>
+		<li>Fact 4</li>
+	</ul>
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript">
+		"use strict";
 		$(document).ready(function(){
 			$('dt').click(function(){
-				$('dd').toggleClass('invisible');
+				$('dl dd').toggleClass('invisible');
+			});
+			$('ul').each(function(){
+				$(this).children().first().css('font-weight','bold');
+			});
+			$('li').click(function(){
+				$(this).parent().last().toggleClass('invisible');
 			});
 		});
 	</script>
 
 </body>
 </html>
+
+
+
+
