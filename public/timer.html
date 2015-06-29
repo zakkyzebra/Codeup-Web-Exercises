@@ -16,10 +16,13 @@
 			font-size: 35px;
 			font-weight: bold;	
 		}
+		#ryu {
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
-	<h1>Simple Counter To See How Much Time You've Wasted</h1>
+	<h1>You Have Survived The Ryu Special For</h1>
 	<div id="counterClock">
 		<p>
 			<span id="hour">
@@ -32,6 +35,9 @@
 				00
 			</span> seconds
 		</p>
+	</div>
+	<div id="ryu">
+		<img src=img/RyuSpecial.gif>
 	</div>
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript">
@@ -70,6 +76,20 @@
 				}
 
 			},1000)
+
+			myAudio = new Audio('img/RyuSpecial.mp3'); 
+			if (typeof myAudio.loop == 'boolean')
+			{
+			    myAudio.loop = true;
+			}
+			else
+			{
+			    myAudio.addEventListener('ended', function() {
+			        this.currentTime = 0;
+			        this.play();
+			    }, false);
+			}
+			myAudio.play();
 
 		});
 
