@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animate</title>
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0;
+        }
+
+        #btn-animate {
+            margin: 15px;
+        }
+
+        .box {
+            background-color: #000033;
+            height: 250px;
+            margin: 15px;
+            position: relative;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+
+    <p>
+        <button id="btn-move">Move It</button>
+
+        <button id="btn-scale-down">Scale It</button>
+
+        <button id="btn-disappear">Disappear It</button>
+
+        <button id="btn-show">Show It</button>
+
+        <button id="btn-all">Animate all</button>
+
+        <button id="btn-sRight">Slink Right</button>
+
+        <button id="btn-sLeft">Slink Left</button>
+
+        <button id="btn-sUp">Slink Up</button>
+
+        <button id="btn-sDown">Slink Down</button>
+
+        <button id="btn-diag">Diagonal</button>
+    </p>
+
+    <div id="animate-box" class="box"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    "use strict";
+
+        $('document').ready(function() {
+            $('#btn-move').click(function() {
+                $('#animate-box')
+                .animate({left: "+=10000"}, 10000)
+            });
+            $('#btn-scale-down').click(function() {
+                $('#animate-box')
+                .animate({width: "+=12500px"}, 10000)
+            });
+            $('#btn-disappear').click(function() {
+                $('#animate-box')
+                .animate({opacity: 0}, 1000)
+            });
+            $('#btn-show').click(function() {
+                $('#animate-box')
+                .animate({opacity: 1}, 1000)
+            });
+            $('#btn-all').click(function() {
+                $('#animate-box')
+                .animate({left: "+=100"}, 100)
+                .animate({width: "+=125px"}, 100)
+                .animate({opacity: 0}, 1000)
+                .animate({opacity: 1}, 1000)
+            });
+            $("#btn-sRight").click(function(){
+                $('#animate-box')
+                .animate({
+                    width: '+=200px'
+                },1000)
+                .animate({
+                width: '-=200px',
+                left: '+=200px'
+                }, 1000);
+            });
+            $("#btn-sLeft").click(function(){
+                $('#animate-box')
+                .animate({
+                    width: '-=200px'
+                },1000)
+                .animate({
+                width: '+=200px',
+                left: '-=200px'
+                }, 1000);
+            });
+            $("#btn-sUp").click(function(){
+                $('#animate-box')
+                .animate({
+                    height: '-=200px'
+                },1000)
+                .animate({
+                height: '+=200px',
+                top: '-=200px'
+                }, 1000);
+            });
+            $("#btn-sDown").click(function(){
+                $('#animate-box')
+                .animate({
+                    height: '+=200px'
+                },1000)
+                .animate({
+                height: '-=200px',
+                top: '+=200px'
+                }, 1000);
+            });
+            $("#btn-diag").click(function(){
+                $('#animate-box')
+                .animate({
+                left: '+=200px',
+                top: '+=200px'
+                }, 1000);
+                $('#animate-box')
+                .animate({
+                left: '+=200px',
+                top: '-=200px'
+                }, 1000);
+                $('#animate-box')
+                .animate({
+                left: '+=200px',
+                top: '+=200px'
+                }, 1000);
+                $('#animate-box')
+                .animate({
+                left: '+=200px',
+                top: '-=200px'
+                }, 1000);
+            });
+        });
+
+    
+    </script>
+</body>
+</html>
