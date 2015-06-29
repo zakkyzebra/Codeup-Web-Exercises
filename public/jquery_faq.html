@@ -68,10 +68,10 @@
 			var isOn = false;
 			$('dt,dd').click(function(){
 				if(isOn == false){
-					$('dl dd').fadeOut(1000);
+					$('dl dd').slideToggle(1000);
 					isOn = true;
 				} else {
-					$('dl dd').fadeIn(1000);
+					$('dl dd').slideToggle(1000);
 					isOn = false;
 				}
 			});
@@ -79,10 +79,10 @@
 				$(this).children().first().css('font-weight','bold');
 			});
 			$('li').click(function(){
-				$(this).parent().fadeOut(1000);
+				$(this).parent().slideToggle(1000);
 			});
 			$('h3').click(function(){
-				$('ul').fadeIn();
+				$('ul').slideToggle();
 			});
 
 		});
