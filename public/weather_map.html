@@ -1,54 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaAZUIDBgdbxVygyrXjda2lDhpi7DP_kM"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/weather_map.css">
 	<title>Weather Map</title>
-	<style type="text/css">
-		.forecast{
-			display: inline-block;
-			padding: 5px 15px 5px 10px;
-			background-color: lightYellow;
-		}
-		#container {
-			background-color: lightBlue;
-			padding: 10px 10px 10px 10px;
-			text-align: center;
-
-		}
-		#mapCanvas{
-			width: 400px;
-			height: 350px;
-			text-align: center;
-			margin-left: auto;
-			margin-right: auto;
-		}
-		body {
-			font-family: "Comic Sans MS";
-		}
-	</style>
 </head>
 <body>
-	<!-- FORM ASKING FOR ADDRESS INPUT FOR MAP OUTPUT-->
-	<form method="post" id="formId">
-		address: <input id="idLong" name="address" type="text"><br>
-		<input type="submit">
-	</form>
 	<!-- DIV CONTAINER ALLOWS CSS STYLING. EMPTY DIVS INSIDE FOR MAP AND WEATHER INPUT -->
-	<div id="container">
-		<p id="cityNameHead"></p>
-		<div class="forecast" id="dayOneWeather">
+	<div id="container" class="img-rounded shadow">
+		<p class="center_me" id="cityNameHead"></p>
+		<div class="forecast shadow img-rounded" id="dayOneWeather">
 
 		</div>
-		<div class="forecast" id="dayTwoWeather">
+		<div class="forecast shadow img-rounded" id="dayTwoWeather">
 
 		</div>
-		<div class="forecast" id="dayThreeWeather">
+		<div class="forecast shadow img-rounded" id="dayThreeWeather">
 
 		</div>
 		<div id="mapCanvas"></div>
 	</div>
-	<!-- ADDING SOME SWEET SWEET JQUERY AND API KEYS-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaAZUIDBgdbxVygyrXjda2lDhpi7DP_kM"></script>
+	<!-- FORM ASKING FOR ADDRESS INPUT FOR MAP OUTPUT-->
+	<form class="center_me" method="post" id="formId">
+		<input id="idLong" placeholder="Enter address here"name="address" type="text">
+		<input type="submit" value="View Weather">
+	</form>
+
 	<!--LET THE FUNCTIONS BEGIN-->
     <script>
 		var json;
@@ -126,8 +107,6 @@
 				    }
 				    latX = results[0].geometry.location.A;
 				    longY = results[0].geometry.location.F;
-				    var map = new google.maps.Map(document.getElementById("mapCanvas"), mapOptions);
-
 				} else {
 					alert("Geocoding was not successful - STATUS: " + status);
 				}
