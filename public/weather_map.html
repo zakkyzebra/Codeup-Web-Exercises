@@ -49,19 +49,7 @@
 		var json;
 		var latX;
 		var longY;
-    	var ajaxReq = $.get("http://api.openweathermap.org/data/2.5/forecast/daily?q=bulverde,4677392&cnt=3", {
-		    APPID: "54c825c0e86eedb19afe64cac578e6c7",
-		    units: "imperial"
-		});
-
-		ajaxReq.always(function(){
-			console.log('req sent');
-		});
-		ajaxReq.fail(function(data, error){
-			console.log('error');
-			console.log(ajaxReq.status);
-		});
-		ajaxReq.done(function(data){
+		function mapAppear(data) {
 			var dayOne = $('#dayOneWeather');
 			var dayTwo = $('#dayTwoWeather');
 			var dayThree = $('#dayThreeWeather');
@@ -89,8 +77,26 @@
 			dayThree.append("Humidity: " + data.list[2].humidity + "<br>");
 			dayThree.append("Wind: " + data.list[2].speed + "<br>");
 			dayThree.append("Pressure: " + data.list[2].pressure + "<br>");
+		};
 
+    	navigator.geolocation.getCurrentPosition(function(position){
+			var ajaxReq = $.get("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&cnt=3", {
+			    APPID: "54c825c0e86eedb19afe64cac578e6c7",
+			    units: "imperial"
+			});
+			ajaxReq.always(function(){
+				console.log('req sent');
+			});
+			ajaxReq.fail(function(data, error){
+				console.log('error');
+				console.log(ajaxReq.status);
+			});
+			ajaxReq.done(function(data){
+				mapAppear(data);
+				console.log('done');	
+			});
 		});
+
 	    $('#formId').on('submit',function (e) {
             e.preventDefault();
         	json = $('form').serializeArray();
@@ -108,21 +114,11 @@
 				    longY = results[0].geometry.location.F;
 				    var map = new google.maps.Map(document.getElementById("mapCanvas"), mapOptions);
 
-				    var marker = new google.maps.Marker({
-				    	position: results[0].geometry.location,
-				    	map: map
-				    });
-
-				    var infowindow = new google.maps.InfoWindow({
-				        content: "Viewing Pointer's Weather"
-				    });
-
-				    infowindow.open(map,marker);
 				} else {
 					alert("Geocoding was not successful - STATUS: " + status);
 				}
 
-				var ajaxReq2 = $.get("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + latX + "&lon=" + longY + "&cnt={cnt}", {
+				var ajaxReq2 = $.get("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + latX + "&lon=" + longY + "&cnt=3", {
 				    APPID: "54c825c0e86eedb19afe64cac578e6c7",
 				    units: "imperial"
 				});
@@ -135,44 +131,12 @@
 					console.log(ajaxReq2.status);
 				});
 				ajaxReq2.done(function(data){
-					console.log(data);
-					var dayOne = $('#dayOneWeather');
-					var dayTwo = $('#dayTwoWeather');
-					var dayThree = $('#dayThreeWeather');
-					$('#cityNameHead').append("<h1>"+ data.city.name + "</h1>");
-					dayOne.append("<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>");
-					dayOne.append("<h3>" + data.city.name + " Day One</h3>");
-					dayOne.append("<h4>" + parseInt(data.list[0].temp.max) + "°/ " + parseInt(data.list[0].temp.min) + "°</h4>");
-					dayOne.append( "<strong>" + data.list[0].weather[0].main + "</strong>: " + data.list[0].weather[0].description + "<br>");
-					dayOne.append("Humidity: " + data.list[0].humidity + "<br>");
-					dayOne.append("Wind: " + data.list[0].speed + "<br>");
-					dayOne.append("Pressure: " + data.list[0].pressure + "<br>");
-
-					dayTwo.append("<img src='http://openweathermap.org/img/w/" + data.list[1].weather[0].icon + ".png'>");
-					dayTwo.append("<h3>" + data.city.name + " Day Two</h3>");
-					dayTwo.append("<h4>" + parseInt(data.list[1].temp.max) + "°/ " + parseInt(data.list[1].temp.min) + "°</h4>");
-					dayTwo.append( "<strong>" + data.list[1].weather[0].main + "</strong>: " + data.list[1].weather[0].description + "<br>");
-					dayTwo.append("Humidity: " + data.list[1].humidity + "<br>");
-					dayTwo.append("Wind: " + data.list[1].speed + "<br>");
-					dayTwo.append("Pressure: " + data.list[1].pressure + "<br>");
-
-					dayThree.append("<img src='http://openweathermap.org/img/w/" + data.list[2].weather[0].icon + ".png'>");
-					dayThree.append("<h3>" + data.city.name + " Day Three</h3>");
-					dayThree.append("<h4>" + parseInt(data.list[2].temp.max) + "°/ " + parseInt(data.list[2].temp.min) + "°</h4>");
-					dayThree.append( "<strong>" + data.list[2].weather[0].main + "</strong>: " + data.list[2].weather[0].description + "<br>");
-					dayThree.append("Humidity: " + data.list[2].humidity + "<br>");
-					dayThree.append("Wind: " + data.list[2].speed + "<br>");
-					dayThree.append("Pressure: " + data.list[2].pressure + "<br>");
-
+					mapAppear(data);
+					console.log('done')
 				});	
 			    var map = new google.maps.Map(document.getElementById("mapCanvas"), mapOptions);
 			});
         });
-	// navigator.geolocation.getCurrentPosition(function(position){
-	// 	console.log(position)
-	// 	getWeather(position.coords.latitude, position.coords.longitude);
-	// });
-		
 
     </script>
 
