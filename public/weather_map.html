@@ -3,31 +3,36 @@
 <head>
 	<title>Weather Map</title>
 	<style type="text/css">
-	.forecast{
-		display: inline-block;
-		padding: 5px 15px 5px 10px;
-		background-color: lightYellow;
-	}
-	#container {
-		background-color: lightBlue;
-		padding: 10px 10px 10px 10px;
-		text-align: center;
+		.forecast{
+			display: inline-block;
+			padding: 5px 15px 5px 10px;
+			background-color: lightYellow;
+		}
+		#container {
+			background-color: lightBlue;
+			padding: 10px 10px 10px 10px;
+			text-align: center;
 
-	}
-	#mapCanvas{
-		width: 400px;
-		height: 350px;
-		text-align: center;
-		margin-left: auto;
-		margin-right: auto;
-	}
+		}
+		#mapCanvas{
+			width: 400px;
+			height: 350px;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		body {
+			font-family: "Comic Sans MS";
+		}
 	</style>
 </head>
 <body>
+	<!-- FORM ASKING FOR ADDRESS INPUT FOR MAP OUTPUT-->
 	<form method="post" id="formId">
 		address: <input id="idLong" name="address" type="text"><br>
 		<input type="submit">
 	</form>
+	<!-- DIV CONTAINER ALLOWS CSS STYLING. EMPTY DIVS INSIDE FOR MAP AND WEATHER INPUT -->
 	<div id="container">
 		<p id="cityNameHead"></p>
 		<div class="forecast" id="dayOneWeather">
@@ -41,19 +46,23 @@
 		</div>
 		<div id="mapCanvas"></div>
 	</div>
+	<!-- ADDING SOME SWEET SWEET JQUERY AND API KEYS-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaAZUIDBgdbxVygyrXjda2lDhpi7DP_kM"></script>
-
+	<!--LET THE FUNCTIONS BEGIN-->
     <script>
-    "use strict";
 		var json;
 		var latX;
 		var longY;
+		//MAP INPUT
 		function mapAppear(data) {
+			//VARIABLES TO POINT TO THE DIV
 			var dayOne = $('#dayOneWeather');
 			var dayTwo = $('#dayTwoWeather');
 			var dayThree = $('#dayThreeWeather');
+			//GRABS CITY PROPERTY AND PUTS IT IN HEADER TAGS
 			$('#cityNameHead').append("<h1>"+ data.city.name + "</h1>");
+			//ADDS WEATHER DATA AND PUTS IT IN CORRESPONDING DIVS DAY 1
 			dayOne.append("<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>");
 			dayOne.append("<h3>" + data.city.name + " Day One</h3>");
 			dayOne.append("<h4>" + parseInt(data.list[0].temp.max) + "°/ " + parseInt(data.list[0].temp.min) + "°</h4>");
@@ -61,7 +70,7 @@
 			dayOne.append("Humidity: " + data.list[0].humidity + "<br>");
 			dayOne.append("Wind: " + data.list[0].speed + "<br>");
 			dayOne.append("Pressure: " + data.list[0].pressure + "<br>");
-
+			//ADDS WEATHER DATA AND PUTS IT IN CORRESPONDING DIVS DAY 2
 			dayTwo.append("<img src='http://openweathermap.org/img/w/" + data.list[1].weather[0].icon + ".png'>");
 			dayTwo.append("<h3>" + data.city.name + " Day Two</h3>");
 			dayTwo.append("<h4>" + parseInt(data.list[1].temp.max) + "°/ " + parseInt(data.list[1].temp.min) + "°</h4>");
@@ -69,7 +78,7 @@
 			dayTwo.append("Humidity: " + data.list[1].humidity + "<br>");
 			dayTwo.append("Wind: " + data.list[1].speed + "<br>");
 			dayTwo.append("Pressure: " + data.list[1].pressure + "<br>");
-
+			//ADDS WEATHER DATA AND PUTS IT IN CORRESPONDING DIVS DAY 3
 			dayThree.append("<img src='http://openweathermap.org/img/w/" + data.list[2].weather[0].icon + ".png'>");
 			dayThree.append("<h3>" + data.city.name + " Day Three</h3>");
 			dayThree.append("<h4>" + parseInt(data.list[2].temp.max) + "°/ " + parseInt(data.list[2].temp.min) + "°</h4>");
@@ -78,8 +87,9 @@
 			dayThree.append("Wind: " + data.list[2].speed + "<br>");
 			dayThree.append("Pressure: " + data.list[2].pressure + "<br>");
 		};
-
+		//DEFAULT WEATHER LOCATION IS YOUR LOCATION
     	navigator.geolocation.getCurrentPosition(function(position){
+    		//MAKES AJEX REQUEST FOR LAT AND LONG
 			var ajaxReq = $.get("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&cnt=3", {
 			    APPID: "54c825c0e86eedb19afe64cac578e6c7",
 			    units: "imperial"
@@ -96,14 +106,18 @@
 				console.log('done');	
 			});
 		});
-
+    	//FORM INPUT ON CLICK FUNCTION
 	    $('#formId').on('submit',function (e) {
+	    	//PREVENTS RELOAD
             e.preventDefault();
+            //MAKING IT AN ARRAY FOR EASY USE
         	json = $('form').serializeArray();
+        	//EMPTY THE DIVS TO MAKE SURE THERE IS ROOM FOR THE NEXT WEATHER INPUT
         	$('#dayOneWeather, #dayTwoWeather, #dayThreeWeather, #cityNameHead').html("");
+        	//GETTING THE VALUES FOR THE MAP
             var address = json[0].value;
 			var geocoder = new google.maps.Geocoder();
-
+			//MAKING THE MAP HAPPEN
 			geocoder.geocode( { 'address': address}, function(results, status) {
 				if (status == google.maps.GeocoderStatus.OK) {
 				    var mapOptions = {
@@ -118,19 +132,19 @@
 					alert("Geocoding was not successful - STATUS: " + status);
 				}
 
-				var ajaxReq2 = $.get("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + latX + "&lon=" + longY + "&cnt=3", {
+				var ajaxReq = $.get("http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + latX + "&lon=" + longY + "&cnt=3", {
 				    APPID: "54c825c0e86eedb19afe64cac578e6c7",
 				    units: "imperial"
 				});
 
-				ajaxReq2.always(function(){
+				ajaxReq.always(function(){
 					console.log('req sent');
 				});
-				ajaxReq2.fail(function(data, error){
+				ajaxReq.fail(function(data, error){
 					console.log('error');
-					console.log(ajaxReq2.status);
+					console.log(ajaxReq.status);
 				});
-				ajaxReq2.done(function(data){
+				ajaxReq.done(function(data){
 					mapAppear(data);
 					console.log('done')
 				});	
