@@ -23,10 +23,10 @@
 
 		</div>
 		<form id="addressBar">
-		    <input type="text" id="user_location" name="user_location" class="address"> <a href="#" class="button">Search address</a>
-		    <div style="width:80%;height:300px" id="mapHere" class="mapCanvas"><br><br><br><br><br>Map is loading</div>
-		    lat: <input name="latHere" value="" class="latHolder" readonly>
-		    long: <input name="longHere" value="" class="longHolder" readonly>
+		    <input type="text" id="user_location" name="user_location" class="address img-rounded"> <a href="#" class="button">Search address</a>
+		    <div style="width:80%;height:300px" id="mapHere" class="mapCanvas img-rounded"><br><br><br><br><br>Map is loading</div>
+		    lat: <input name="latHere" value="" class="latHolder img-rounded" readonly>
+		    long: <input name="longHere" value="" class="longHolder img-rounded" readonly>
 		</form>
 	</div>
  
@@ -131,8 +131,6 @@
 							mapAppear(data);
 							console.log('done')
 						});	
-					} else {
-						console.log("Please insert address.");
 					}
 				});
 			}
@@ -155,10 +153,13 @@
 			ajaxReq.done(function(data){
 				var lat = data.city.coord.lat;
 				var long = data.city.coord.lon;
+				var addBar = data.city.name;
+				$('.latHolder').val(lat);
+				$('.longHolder').val(long);
+				$('#user_location').val(addBar);
 				initMap(lat, long);
 				mapAppear(data);
 				console.log('done');
-				console.log(data.city);	
 			});
 		});
 
