@@ -1,0 +1,48 @@
+		.forecast{
+			display: inline-block;
+			padding: 15px 15px 15px 10px;
+			background-color: lightYellow;
+			margin: 15px;
+		}
+		#container {
+			background-color: lightBlue;
+			padding: 10px 0px 0px 0px;
+			text-align: center;
+			width: 80%;
+			float: none;
+			margin-right: auto;
+			margin-left: auto;
+			margin-bottom: 15px;
+
+		}
+		#mapCanvas{
+			width: 400px;
+			height: 350px;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		body {
+			font-family: "Comic Sans MS";
+		}
+		.shadow{
+			box-shadow: 4px 4px 4px 4px #666;
+		}
+		.center_me{
+			text-align: center;
+			margin-top: 15px;
+		}
+		#idLong {
+			width: 50%;
+		}
+		#addressBar{
+			text-align: center;
+		}
+		#mapHere{
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+
+
+

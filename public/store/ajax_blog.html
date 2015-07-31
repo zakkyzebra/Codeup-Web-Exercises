@@ -87,11 +87,10 @@
             </div>
                 <div id="posts"></div>
         </div>
-        <form id="formID">
-            <input type="text" name="title" value="title"><br>
-            <input type="text" name="content" value="content"><br>
-            <input type="text" name="categories" value="categories"><br>
-            <input type="text" name="date" value="date"><br>
+        <form method="post" id="formID">
+            Title:<input type="text" name="title"><br>
+            Content:<textarea rows="14" type="text" name="content"></textarea><br>
+            Categories:<input type="text" name="categories"><br>
             <input type="submit">
         </form>
     </div>
@@ -105,6 +104,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
     "use strict";
+    var json;
         function getInv() {
             $.getJSON("data/blog.json",
             function (json) {
@@ -126,15 +126,14 @@
         });
         $('#formID').on('submit',function (e) {
             e.preventDefault();
-            $.ajax({
-                url: 'data/blog.json',
-                cache: false,
-                type: 'POST',
-                data : $('#formID').serialize(),
-                success: function(json) {
-                    alert('all done');
-                }
-            });
+            // console.log(e);
+            console.log($('form').serializeArray());
+            json = $('form').serializeArray();
+            document.getElementById('posts').innerHTML += "<h3>" + json[0].value + "</h3>";
+            document.getElementById('posts').innerHTML += json[1].value + "<br>";
+            document.getElementById('posts').innerHTML += "<u><i>" + json[2].value + "</u></i></h3><br>";
+            document.getElementById('posts').innerHTML += "<strong>" + Date() + "<strong>";
+           
         });
     </script>
 
