@@ -4,6 +4,7 @@
 	define("DB_USER", 'parks_user');
 	define("DB_PASS", '');
 	require 'db_connect.php';
+
 	$dbc->exec('DROP TABLE IF EXISTS national_parks');
 	$dbc->exec('CREATE TABLE national_parks(
 		id INT UNSIGNED NOT NULL AUTO_INCREMENT,
