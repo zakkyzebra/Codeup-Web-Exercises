@@ -117,6 +117,10 @@
     		padding-top: 5px;
     		margin-top: 0;
     	}
+    	.col-centered{
+		    float: none;
+		    margin: 0 auto;
+		}
     </style>
 </head>
 <body>
@@ -174,7 +178,7 @@
 	?>
 	</div>
 
-	<div class="col-md-3 containThis giveMeABigButt">
+	<div class="col-md-3 col-centered containThis giveMeABigButt">
 		<form method="POST">
 			<span class="blue">Name</span><input class="widenThis" type="text" name="parkName" placeholder="Park name"><br>
 			<span class="blue">Location</span><input class="widenThis" type="text" name="parkLocation" placeholder="Location"><br>
