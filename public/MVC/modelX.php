@@ -1,28 +1,26 @@
 <?
     class Model {
+
         protected static $dbc;
         protected static $table;
+
         public $attributes = array();
-        /*
-         * Constructor
-         */
+
         public function __construct()
         {
             self::dbConnect();
         }
-        /*
-         * Connect to the DB
-         */
+
         private static function dbConnect()
         {
             if (!self::$dbc)
             {
                 require_once '../../mvc_db_connect.php';
-                self::$dbc = new PDO('mysql:host=' . DB_HOST . ';dbname=' .DB_NAME, DB_USER, DB_PASS);
+                self::$dbc = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
                 self::$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                echo "Connected to db." . PHP_EOL;
             }
         }
+
         /*
          * Get a value from attributes based on name
          */
@@ -34,6 +32,7 @@
                 }
                 return null;
         }
+
         /*
          * Set a new attribute for the object
          */
@@ -41,34 +40,42 @@
         {
             $this->attributes[$name] = $value;        
         }
+
         /*
          * Persist the object to the database
          */
         public function save()
         {
-            //UPDATE ELSE INSERT
-            if (!empty($this->attributes['id'])) {
-                $table = static::$table;
+            if(!empty($this->attributes['id']))
+            {
                 $query = '  UPDATE users 
                             SET name = :name, email = :email
                             WHERE id = :id';
                 $stmt = self::$dbc->prepare($query);
-                $stmt->bindValue(':name', $this->name, PDO::PARAM_STR); 
-                $stmt->bindValue(':email', $this->email, PDO::PARAM_STR); 
-                $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
-                $stmt->execute();
-                echo "File has been updated at ID: " . $this->attributes['id'] . PHP_EOL;
-            }else{
+                    $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
+                    $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
+                    $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+                    $stmt->execute();
+            
+                echo "File has been updated at ID: " . $this->attributes['id'] . "." . PHP_EOL;
+            }
+            else
+            {
                 $query = '  INSERT INTO users (id, name, email)
-                            VALUES(:id, :name, :email)';
+                            VALUES (:id, :name, :email)';
+                
                 $stmt = self::$dbc->prepare($query);
-                $stmt->execute(array(':id' => $this->id , ':email' => $this->email, ':name' => $this->name));
-                echo "Inserted ID: " . self::$dbc->lastInsertId() . PHP_EOL;
+                $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+                $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
+                $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
+                $stmt->execute();
+                echo "Inserted ID: " . self::$dbc->lastInsertId();
             }
         }
         /*
          * Find a record based on an id
          */
+        
         public static function find($id)
         {
             // Get connection to the database
@@ -88,6 +95,9 @@
             return $instance;
         }
 
+        /*
+         * Find all records in a table
+         */
         public static function all()
         {
             self::dbConnect();
@@ -95,7 +105,7 @@
             $query  = " SELECT * 
                         FROM $table";
             $results = self::$dbc->query($query)->fetchAll(PDO::FETCH_ASSOC);
-            return $results; 
+            return $results;      
         }
 
         public static function delete($id)
@@ -108,3 +118,12 @@
         }
     }
 ?>
+
+
+
+
+
+
+
+
+
